@@ -32,6 +32,7 @@ int solve_phase_1(uint64_t challenge, char *out, size_t cap) {
     uint32_t ans = ((3 * t0) ^ (t2 + 0x4cabu));
 
     values[count++] = ans;
+    return write_answer(out, cap, values, count);
 
 }
 
