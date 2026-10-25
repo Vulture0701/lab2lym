@@ -37,10 +37,18 @@ int solve_phase_1(uint64_t challenge, char *out, size_t cap) {
 }
 
 int solve_phase_2(uint64_t challenge, char *out, size_t cap) {
-    uint32_t values[MAX_FIELDS] = {0};
+    uint32_t values[6];
     size_t count = 0;
-    (void)challenge;
-    // TODO: 根据 phase_02 的汇编，用 challenge 算出口令中的各个整数，依次存入 values，并把 count 改为整数个数。
+
+    values[0] = (((uint32_t)(challenge >> 31) * 2) & 0xFF) + 0x18u;
+
+    for (uint32_t i = 1; i <= 5; i++) {
+        uint32_t shifted = (uint32_t)(challenge >> (13 + 2*(i-1)));
+        uint32_t expected = ((shifted & 0xFu) + i) ^ (3u * values[i-1]);
+        values[i] = expected;
+    }
+
+    count = 6;
     return write_answer(out, cap, values, count);
 }
 
