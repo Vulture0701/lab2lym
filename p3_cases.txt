@@ -1,0 +1,48 @@
+Dump of assembler code for function p3_case_0:
+   0x00000000004021b0 <+0>:	endbr64
+   0x00000000004021b4 <+4>:	mov    %edi,%eax
+   0x00000000004021b6 <+6>:	shr    $0x2,%edi
+   0x00000000004021b9 <+9>:	xor    $0xd368,%eax
+   0x00000000004021be <+14>:	add    %edi,%eax
+   0x00000000004021c0 <+16>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_1:
+   0x00000000004021d0 <+0>:	endbr64
+   0x00000000004021d4 <+4>:	lea    0xa25d(%rdi,%rdi,4),%eax
+   0x00000000004021db <+11>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_2:
+   0x00000000004021e0 <+0>:	endbr64
+   0x00000000004021e4 <+4>:	lea    0x3ca7d(%rdi,%rdi,4),%eax
+   0x00000000004021eb <+11>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_3:
+   0x00000000004021f0 <+0>:	endbr64
+   0x00000000004021f4 <+4>:	lea    (%rdi,%rdi,1),%eax
+   0x00000000004021f7 <+7>:	xor    $0x5c6b,%eax
+   0x00000000004021fc <+12>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_4:
+   0x0000000000402200 <+0>:	endbr64
+   0x0000000000402204 <+4>:	lea    0xdbd(%rdi,%rdi,2),%eax
+   0x000000000040220b <+11>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_5:
+   0x0000000000402210 <+0>:	endbr64
+   0x0000000000402214 <+4>:	lea    (%rdi,%rdi,1),%eax
+   0x0000000000402217 <+7>:	xor    $0xd7db,%eax
+   0x000000000040221c <+12>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_6:
+   0x0000000000402220 <+0>:	endbr64
+   0x0000000000402224 <+4>:	lea    0x30e9e(%rdi,%rdi,4),%eax
+   0x000000000040222b <+11>:	ret
+End of assembler dump.
+Dump of assembler code for function p3_case_7:
+   0x0000000000402230 <+0>:	endbr64
+   0x0000000000402234 <+4>:	mov    %edi,%eax
+   0x0000000000402236 <+6>:	shr    $1,%edi
+   0x0000000000402238 <+8>:	xor    $0xf61e,%eax
+   0x000000000040223d <+13>:	add    %edi,%eax
+   0x000000000040223f <+15>:	ret
+End of assembler dump.

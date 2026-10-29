@@ -1,0 +1,58 @@
+
+./bomb:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+0000000000402390 <phase_04>:
+  402390:	endbr64
+  402394:	push   %rbp
+  402395:	mov    %rsp,%rbp
+  402398:	push   %r12
+  40239a:	mov    %rsi,%r12
+  40239d:	mov    $0x1,%esi
+  4023a2:	push   %rbx
+  4023a3:	mov    %rdi,%rbx
+  4023a6:	sub    $0x10,%rsp
+  4023aa:	call   402c80 <valid_u32_fields>
+  4023af:	test   %al,%al
+  4023b1:	jne    4023c0 <phase_04+0x30>
+  4023b3:	add    $0x10,%rsp
+  4023b7:	xor    %eax,%eax
+  4023b9:	pop    %rbx
+  4023ba:	pop    %r12
+  4023bc:	pop    %rbp
+  4023bd:	ret
+  4023be:	xchg   %ax,%ax
+  4023c0:	xor    %eax,%eax
+  4023c2:	lea    -0x14(%rbp),%rdx
+  4023c6:	mov    $0x403189,%esi
+  4023cb:	mov    %rbx,%rdi
+  4023ce:	call   4011e0 <__isoc99_sscanf@plt>
+  4023d3:	cmp    $0x1,%eax
+  4023d6:	jne    4023b3 <phase_04+0x23>
+  4023d8:	mov    %r12,%rcx
+  4023db:	mov    %r12,%rax
+  4023de:	mov    %r12d,%edi
+  4023e1:	xor    %esi,%esi
+  4023e3:	shr    $0x20,%rax
+  4023e7:	shr    $0x7,%rcx
+  4023eb:	and    $0x7f,%edi
+  4023ee:	mov    $0x7f,%edx
+  4023f3:	xor    %eax,%ecx
+  4023f5:	call   402320 <p4_walk>
+  4023fa:	cmp    %eax,-0x14(%rbp)
+  4023fd:	sete   %al
+  402400:	add    $0x10,%rsp
+  402404:	pop    %rbx
+  402405:	pop    %r12
+  402407:	pop    %rbp
+  402408:	ret
+
+Disassembly of section .fini:
