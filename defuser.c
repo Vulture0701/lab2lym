@@ -106,11 +106,63 @@ int solve_phase_4(uint64_t challenge, char *out, size_t cap) {
     return write_answer(out, cap, values, count);
 }
 
+static const int p5_heads[8] = {
+    0,9,10,6,5,1,8,7
+};
+
+struct  p5_node_data{
+    int next;
+    uint32_t f8;
+    uint32_t fc;
+};
+static const struct p5_node_data p5_nodes[]=
+{
+    {  9, 2589, 16804 },
+    {  8, 2162, 14322 },
+    { -1, 1894, 16757 },  // next 待查，c3<=3 用不到
+    { -1,    0,     0 },  // 未使用
+    { 11,   96, 50637 },
+    {  1, 2845, 43625 },
+    {  5, 1403, 39192 },
+    {  4, 1042, 45188 },
+    {  7, 2389, 29045 },
+    { 10,  829, 19059 },
+    {  6,  281, 56813 },
+    {  2, 1612, 23481 },
+};
+
+static uint32_t p5_traverse(uint64_t challenge, uint32_t *out) {
+    uint32_t idx = (uint32_t)challenge & 7u;
+    uint32_t c3  = ((uint32_t)(challenge >> 3)) & 3u;
+
+    int node = p5_heads[idx];
+    uint32_t t = (uint32_t)(challenge >> 6) ^ (uint32_t)(challenge >> 32);
+
+    uint32_t eax = ((t ^ 0xebb3u) + p5_nodes[node].fc) * 5u;
+    *out = p5_nodes[node].f8;
+    eax ^= p5_nodes[node].f8;
+
+    for (uint32_t i = 0; i < c3; i++) {
+        node = p5_nodes[node].next;
+        eax = (eax + p5_nodes[node].fc) * 5u;
+        *out = p5_nodes[node].f8;
+        eax ^= p5_nodes[node].f8;
+    }
+
+    return eax;
+}
+
 int solve_phase_5(uint64_t challenge, char *out, size_t cap) {
-    uint32_t values[MAX_FIELDS] = {0};
+    uint32_t values[2];
     size_t count = 0;
-    (void)challenge;
-    // TODO: 根据 phase_05 的汇编，用 challenge 算出口令中的各个整数，依次存入 values，并把 count 改为整数个数。
+    uint32_t slot =0;
+
+    uint32_t ret = p5_traverse(challenge, &slot);
+
+    values[0] = ret;
+    values[1] = slot;
+    count =2;
+
     return write_answer(out, cap, values, count);
 }
 
